@@ -1,26 +1,28 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const textarea = document.getElementById('textarea');
+const testArea = document.getElementById("testArea")
+const timesTextArea = document.getElementById("times");
 
 let time = new Date().getTime(), difference = 0, count = 1;
-ctx.fillStyle = "green";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-function test(){
+test = (event) => {
+    if (event.target === timesTextArea) {
+        return;
+    }
+
     difference = (new Date().getTime() - time) / 1000;
     time = new Date().getTime();
-    if (difference < 0.080){
-        ctx.fillStyle = "red";
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    if (difference < 0.08){
+        testArea.style.background = "rgb(236, 53, 53)";
+        timesTextArea.style.background = "rgb(236, 53, 53)";
+        window.setTimeout(() => {
+            testArea.style.background = "white"
+            timesTextArea.style.background = "white"
+        }, 3000)
         document.getElementById('count').innerHTML = "Double click count: " + count++;
     }
-    else{
-        ctx.fillStyle = "green";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-    textarea.value = difference + "\n" + textarea.value;
+    timesTextArea.value = difference + "\n" + timesTextArea.value;
 }
 
 window.onload = function(){
-    textarea.value = "";
+    timesTextArea.value = "";
 }

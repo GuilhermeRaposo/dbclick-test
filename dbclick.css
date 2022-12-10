@@ -1,12 +1,27 @@
-canvas {
-    width: 100%;
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 body {
     text-align: center;
 }
 
-textarea {
+h1 {
+    margin: 0;
+    padding: 30px;
+}
+
+.testArea {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.results {
+    margin-top: 25%;
+}
+
+.times {
     width: 500px;
     height: 200px;
 }
